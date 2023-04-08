@@ -17,7 +17,7 @@ def create_cfg(code_file_path):
     counter = 0
 
     # Generate nodes and edges
-    def visit_node(node, parent_node_name):
+    def traverse_tree(node, parent_node_name):
         nonlocal counter
         counter += 1
         node_name = f"Node_{counter}"
@@ -37,12 +37,12 @@ def create_cfg(code_file_path):
         for child_node_name, child_node in ast.iter_fields(node):
             if isinstance(child_node, list):
                 for i, child in enumerate(child_node):
-                    visit_node(child, node_name)
+                    traverse_tree(child, node_name)
             elif isinstance(child_node, ast.AST):
-                visit_node(child_node, node_name)
+                traverse_tree(child_node, node_name)
 
     # Start the recursive call
-    visit_node(tree, None)
+    traverse_tree(tree, None)
 
     return graph.source
 
