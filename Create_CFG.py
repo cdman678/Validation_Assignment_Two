@@ -48,7 +48,7 @@ def create_cfg(code_file_path):
 
 
 # Sample 1 - A slightly more complex calculator with a GUI
-graph = graphviz.Source(create_cfg("Simple-Calculator-1/Simple Calculator by Python.py"))
+graph = graphviz.Source(create_cfg("Simple-Calculator-1/Simple_Calculator_by_Python.py"))
 graph.render('CFG_Output-1', format='png', cleanup=True)
 
 # Sample 2 - A very simple CLI based calculator
